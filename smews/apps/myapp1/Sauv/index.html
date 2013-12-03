@@ -1,0 +1,56 @@
+<html>
+	
+	<head>
+	</head>
+	
+	<script>
+		var led1 = 0;
+		var led2 = 0;
+		var led3 = 0;
+		var led4 = 0;
+		function allume_led(led){
+			var chaine = "allume_leds?led="+led;
+			ajaxGet(chaine);
+		}
+		
+		function eteind_led(led){
+			var chaine = "eteind_leds?led="+led;
+			ajaxGet(chaine);
+		}
+		
+		function on_off(led){
+			var chaine = "on_off?led="+led;
+			ajaxGet(chaine);
+		}
+		
+		function ajaxGet(url) {
+			var xhr;
+			var xhrTimer;
+			try{ xhr = new XMLHttpRequest(); }
+			catch(e){ xhr = new ActiveXObject('Microsoft.XMLHTTP'); }
+
+			xhr.onreadystatechange = function(){
+				chart.sampleCallBack(xhr,xhrTimer);
+			};
+			xhr.open("GET", url, true);
+			xhrTimer = setTimeout(function() { xhr.abort(); this.inFlight = 0;}, 1000);
+			xhr.send(null);
+		}
+	</script>
+	<body>
+		<button onclick="allume_led(1)">allume led1</button>
+		<button onclick="allume_led(2)">allume led2</button>
+		<button onclick="allume_led(3)">allume led3</button>
+		<button onclick="allume_led(4)">allume led4</button>
+		<br />
+		<button onclick="eteind_led(1)">eteind led1</button>
+		<button onclick="eteind_led(2)">eteind led2</button>
+		<button onclick="eteind_led(3)">eteind led3</button>
+		<button onclick="eteind_led(4)">eteind led4</button>
+		<br />
+		<button onclick="on_off(1)">on off 1</button>
+		<button onclick="on_off(2)">on off 2</button>
+		<button onclick="on_off(3)">on off 3</button>
+		<button onclick="on_off(4)">on off 4</button>
+	</body>
+</html>

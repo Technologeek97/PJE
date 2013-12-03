@@ -1,0 +1,28 @@
+<html>
+	
+	<head>
+	</head>
+	
+	<script>
+		function run(){
+			ajaxGet("allume_led");
+		}
+		
+		function ajaxGet(url) {
+			var xhr;
+			var xhrTimer;
+			try{ xhr = new XMLHttpRequest(); }
+			catch(e){ xhr = new ActiveXObject('Microsoft.XMLHTTP'); }
+
+			xhr.onreadystatechange = function(){
+				chart.sampleCallBack(xhr,xhrTimer);
+			};
+			xhr.open("GET", url, true);
+			xhrTimer = setTimeout(function() { xhr.abort(); this.inFlight = 0;}, 1000);
+			xhr.send(null);
+		}
+	</script>
+	<body>
+		<button onclick="run()">Run</button>
+	</body>
+</html>

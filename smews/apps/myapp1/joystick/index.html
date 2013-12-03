@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Led Switch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="jquery.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+	
+	<script>
+		window.setInterval(joystick, 10);
+		
+		function joystick(){
+			var chaine = "joystick";
+			ajaxGet(chaine);
+		}
+		
+		function ajaxGet(chaine){
+			$.ajax({
+			url: chaine,
+			type: "GET",
+			dataType: "html",
+			success: 	function(message){
+							document.getElementById('Resultat').innerHTML = message;
+						}
+			});
+		}
+	</script>
+	<body style="margin:auto; width:80%;">
+		<h1 class="text-primary container">JOYSTICK</h1>
+		<br />
+		<br />
+		<p>Resultat :</p>
+		<br />
+		<br />
+		<div id="Resultat"></div>
+		<br />
+		<br />
+		<br />
+		<br />
+		<p class="text-right text-muted"><strong>Powered by Vincent Vidal & Jules VANNESTE.</strong></p>
+	</body>
+</html>

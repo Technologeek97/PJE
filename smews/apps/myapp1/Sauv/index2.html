@@ -1,0 +1,102 @@
+<html>
+	
+	<head>
+	</head>
+	
+	<script>
+		var led1 = 0;
+		var led2 = 0;
+		var led3 = 0;
+		var led4 = 0;
+		function allume_led(led){
+			ajaxGet("allume_leds?led="+led);
+			led1=1;
+		}
+		
+		function allume_led2(){
+			ajaxGet("allume_leds?led=2");
+			led2=1;
+		}
+		
+		function allume_led3(){
+			ajaxGet("allume_leds?led=3");
+			led3=1;
+		}
+		
+		function allume_led4(){
+			ajaxGet("allume_leds?led=4");
+			led4=1;
+		}
+		
+		function eteind_led1(){
+			ajaxGet("eteind_leds?led=1");
+			led1=0;
+		}
+		
+		function eteind_led2(){
+			ajaxGet("eteind_leds?led=2");
+			led2=0;
+		}
+		
+		function eteind_led3(){
+			ajaxGet("eteind_leds?led=3");
+			led3=0;
+		}
+		
+		function eteind_led4(){
+			ajaxGet("eteind_leds?led=4");
+			led4=0;
+		}
+		
+		function on_off1(){
+			ajaxGet("on_off?led=1");
+			if(led1 == 0){
+				led1 = 1;
+			}
+			else{
+			}
+		}
+		
+		function on_off2(){
+			ajaxGet("on_off?led=2");
+		}
+		
+		function on_off3(){
+			ajaxGet("on_off?led=3");
+		}
+		
+		function on_off4(){
+			ajaxGet("on_off?led=4");
+		}
+		
+		function ajaxGet(url) {
+			var xhr;
+			var xhrTimer;
+			try{ xhr = new XMLHttpRequest(); }
+			catch(e){ xhr = new ActiveXObject('Microsoft.XMLHTTP'); }
+
+			xhr.onreadystatechange = function(){
+				chart.sampleCallBack(xhr,xhrTimer);
+			};
+			xhr.open("GET", url, true);
+			xhrTimer = setTimeout(function() { xhr.abort(); this.inFlight = 0;}, 1000);
+			xhr.send(null);
+		}
+	</script>
+	<body>
+		<button onclick="allume_led1()">allume led1</button>
+		<button onclick="allume_led2()">allume led2</button>
+		<button onclick="allume_led3()">allume led3</button>
+		<button onclick="allume_led4()">allume led4</button>
+		<br />
+		<button onclick="eteind_led1()">eteind led1</button>
+		<button onclick="eteind_led2()">eteind led2</button>
+		<button onclick="eteind_led3()">eteind led3</button>
+		<button onclick="eteind_led4()">eteind led4</button>
+		<br />
+		<button onclick="on_off1()">on off 1</button>
+		<button onclick="on_off2()">on off 2</button>
+		<button onclick="on_off3()">on off 3</button>
+		<button onclick="on_off4()">on off 4</button>
+	</body>
+</html>

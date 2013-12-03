@@ -1,0 +1,33 @@
+Binome : 
+	VIDAL Vincent
+	VANNESTE Jules
+
+PJE :
+ 	Web Of Things
+
+Liens utiles :
+	Compilateur mbed : https://launchpad.net/gcc-arm-embedded/4.7/4.7-2012-q4-major
+	Librairie de developpement externe : https://github.com/hauspie/rflpc
+	API de la librairie : http://hauspie.github.io/rflpc/doc/index.html
+
+Blog : 
+	http://blogs.univ-lille1.fr/pg/blog/owner/vincent.vidal
+
+Liens vers les differents articles de Blog :
+	Seance 1: http://blogs.univ-lille1.fr/pg/blog/read/27289/pje-web-of-things-sance-1
+	Seance 2: http://blogs.univ-lille1.fr/pg/blog/read/27516/pje-web-of-things-sance-2
+	Seance 3: http://blogs.univ-lille1.fr/pg/blog/read/27620/pje-web-of-things-sance-3
+	Seance 4: http://blogs.univ-lille1.fr/pg/blog/read/27759/pje-web-of-things-sance-4
+
+Contenu des fichiers main.c par ordre de conception :
+	- led_externe : fonction qui fait clignoter une led branchee sur la pin 28 a l'aide de la "boucle d'attente".
+	
+	- timer : fonction qui fait clignoter une led branchee sur la pin 28 a l'aide d'un timer fournit par la librairie externe... On change l'etat de la LED a chaque top d'horloge.
+	
+	- in : fonction qui ecoute et detecte la mise sous tension d'un port mis en entree (la pin 27 de la carte) et met sous tension la pin 28 provoquant l'allumage d'une led branchee sur ce port.
+	
+	- ethernet : fonction qui detecte et allume une led externe (branchee sur la pin 28) au branchement du cable ethernet sur le port ethernet (relie a la carte).
+	Le circuit associe a ce programme est le sujet du billet de blog de la seance 4 :
+	http://blogs.univ-lille1.fr/pg/blog/read/27759/pje-web-of-things-sance-4
+
+    - front_montant : tentative d'implementation de la fonction qui allume la led lors de la detection d'un front montant.
