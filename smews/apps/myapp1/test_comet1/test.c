@@ -3,35 +3,42 @@
 	<handlers init="init" initGet="initGet" doGet="doGet"/>
 	<properties persitence="volatile" channel="test"/>
 	<args>
-		<arg name="thres" type="uint16" />
+		<arg name="joystick" type="uint16" />
 	</args>
 </generator>
 
 */
 
+#include <stdio.h>
+
+#include "generators.h"
+#include "timers.h"
+#include "channels.h"
+
+static int joystick = 0;
 static int joy = 0;
 
 static void timer() {
 
 	if(rflpc_gpio_get_pin(MBED_DIP12) && joy != 3){
 		joy = 3;
-		server_push(&cpuChannel);
+		server_push(&test);
 	}
 	if(rflpc_gpio_get_pin(MBED_DIP13) && joy != 4){
 		joy = 4;
-		server_push(&cpuChannel);
+		server_push(&test);
 	}
 	if(rflpc_gpio_get_pin(MBED_DIP14) && joy != 5){
 		joy = 5;
-		server_push(&cpuChannel);
+		server_push(&test);
 	}
 	if(rflpc_gpio_get_pin(MBED_DIP15) && joy != 1){
 		joy = 1;
-		server_push(&cpuChannel);
+		server_push(&test);
 	}
 	if(rflpc_gpio_get_pin(MBED_DIP16) && joy != 2){
 		joy = 2;
-		server_push(&cpuChannel);
+		server_push(&test);
 	}
 }
 
@@ -50,6 +57,7 @@ static char init(void) {
 }
 
 static char doGet(struct args_t *args) {
+	joy = args->joystick;
 	out_uint(joy);
 	return 1;
 }

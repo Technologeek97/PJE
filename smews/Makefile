@@ -4,7 +4,7 @@
 #
 IPADDR=192.168.5.68
 TARGET=mbed_ethernet
-APPS=:myapp1/all_in_one
+APPS=:linux/cpuComet
 PROGRAM_CMD=cp ./bin/mbed_ethernet/smews.bin /media/vanneste/MBED
 
 all:
